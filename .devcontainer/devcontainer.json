@@ -1,0 +1,36 @@
+{
+    "name": "ai-edge-torch-bugs-report",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "runArgs": [],
+    "remoteUser": "vscode",
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "editor.formatOnSave": true
+            },
+            "extensions": [
+                "ms-python.python",
+                "charliermarsh.ruff",
+                "redhat.vscode-yaml",
+                "seatonjiang.gitmoji-vscode",
+            ]
+        }
+    },
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "username": "vscode",
+            "uid": "automatic",
+            "gid": "automatic",
+            "installZsh": true,
+            "installOhMyZsh": true,
+            "upgradePackages": false,
+            "nonFreePackages": false
+        }
+    }
+}
